@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Home - info About Employee Management web App</title>
+{% endblock title %}
+
+{% block main %}
+<div class="container-md my-3 pt-3 ">
+    <div class="row my-3 px-5 py-3">
+        <div class="col-md-3 d-flex justify-content-end" >
+            <button class="btn btn-primary fw-bold">View All Employee</button>
+        </div>
+        <div class="col-md-4 align-self-center fs-5 fw-bold">
+            <i class="bi bi-arrow-right-circle-fill"></i> All Records of Employee's. 
+        </div>
+    </div>
+
+    <div class="row my-3 px-5 py-3">
+        <div class="col-md-3 d-flex justify-content-end" >
+            <button class="btn btn-success fw-bold">Add An Employee</button>
+        </div>
+        <div class="col-md-6 align-self-center fs-5 fw-bold">
+            <i class="bi bi-arrow-right-circle-fill"></i> Here you can add employee detail's. 
+        </div>
+    </div>
+
+    <div class="row my-3 px-5 py-3">
+        <div class="col-md-3 d-flex justify-content-end align-self-start" >
+            <button class="btn btn-warning fw-bold">Filter Employee Details</button>
+        </div>
+        <div class="col-md-7 align-self-center fs-5 fw-bold">
+            <i class="bi bi-arrow-right-circle-fill"></i> Here you can filter employee's data using id, name and department.
+        </div>
+    </div>
+
+    <div class="row my-3 px-5 py-1">
+        <div class="col-md-3 d-flex justify-content-end" >
+            <button class="btn btn-danger fw-bold">Edit Employee Detail's</button>
+        </div>
+        <div class="col-md-6 align-self-center fs-5 fw-bold">
+            <i class="bi bi-arrow-right-circle-fill"></i> Here you can update and delete employee's data. 
+        </div>
+    </div>
+</div>
+{% endblock main %}

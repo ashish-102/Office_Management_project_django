@@ -1,0 +1,37 @@
+-------- step 1 ----------
+command for install virtual env
+>> pip install virtualenv
+
+-------- step 2 ---------
+command for activate virtualenv
+>> env\scripts\activate
+
+-------- step 3 ---------
+command for install django
+>> pip install django
+
+>> python -m django --version           # for check version 
+
+-------- step 4 ---------
+command for create project in django
+>> django-admin startproject project_name
+
+command for create app in django
+>> python manage.py startapp app_name
+
+-------- step 5 ---------
+installed app in settings.py
+
+INSTALLED_APPS = [
+    '...',
+    '...',
+    '...',
+    'app_name',
+]
+
+-------- step 6 ---------
+for migrations of models 
+>> python manage.py makemigrations
+>> python manage.py migrate
+
+

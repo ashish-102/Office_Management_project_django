@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Employee details</title>
+{% endblock title %}
+
+{% block main %}
+
+<div class="d-flex justify-content-center">
+    <h3 class="my-3 p-2 bg-secondary bg-gradient text-light w-75 text-center rounded-1"> 
+        {{ data.firstName }} {{ data.lastName }} Detail's</h3 style="--bs-bg-opacity: .5;">
+</div>
+
+<div class="container my-2 px-2">
+    {% if status == 1 %}
+        <div class="alert alert-secondary alert-dismissible fade show fw-bold text-center" role="alert">
+            {{ data.firstName }} data updated successfully!!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+    {% endif %} 
+
+    <form action="{% url 'dataUp' data.id %}" method="POST">
+        {% csrf_token %}
+        <div class="row d-flex my-2">
+            <div class="col">
+                <label for="inputEmail4" class="form-label fw-bold">First Name</label>
+                <input type="text" class="form-control border-secondary p-2 fw-bold" aria-label="First name" name="first" value="{{ data.firstName|capfirst }}" required style='text-transform:capitalize'>
+            </div>
+            <div class="col">
+                <label for="inputEmail4" class="form-label fw-bold">Last Name</label>
+                <input type="text" class="form-control border-secondary p-2 fw-bold" aria-label="Last name"  value="{{ data.lastName|capfirst }}"  name="last" required style='text-transform:capitalize'>
+            </div>
+        </div>
+
+        <div class="row d-flex my-2">
+            <div class="col-6">
+                <label for="inputEmail4" class="form-label fw-bold">Phone</label>
+                <input type="number" class="form-control border-secondary p-2 fw-bold" aria-label="Phone" name="phone"  value="{{ data.phone }}" required>
+            </div>
+            <div class="col-6">
+                <label for="inputEmail4" class="form-label fw-bold">Joining date</label>
+                <input type="text" class="form-control border-secondary p-2 fw-bold"  aria-label="date" name="date" value="{{ data.hireDate }}" required disabled>
+            </div>
+        </div>
+
+
+        <div class="row d-flex my-2">
+            <div class="col-6">
+                <label for="inputEmail4" class="form-label fw-bold">Salary</label>
+                <input type="number" class="form-control border-secondary p-2 fw-bold" aria-label="salary" name="salary" value="{{ data.salary }}" required>
+            </div>
+            <div class="col-6">
+                <label for="bonus" class="form-label fw-bold">Bonus</label>
+                <input type="number" class="form-control border-secondary p-2 fw-bold" aria-label="Bonus" name="bonus" value="{{ data.bonus }}" required>
+            </div>
+        </div>
+
+        <div class="row d-flex my-2">
+            <div class="col-6">
+                <label for="dept" class="form-label fw-bold">Department</label>
+                <select class="form-select border-secondary p-2 fw-bold" aria-label="Default select example" name="dept" required>
+                    <option selected value={{ data.dept.id }}>{{ data.dept.name }} {{ data.dept.location }}</option>
+                    <option value="1">HR Pune</option>
+                    <option value="2">IT Pune</option>
+                    <option value="3">Sales Pune</option>
+                    <option value="4">Marketing Pune</option>
+                    <option value="5">IT Noida</option>
+                    <option value="6">Sales Noida</option>
+                    <option value="7">Marketing Noida</option>
+                    <option value="8">HR Noida</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="inputEmail4" class="form-label fw-bold">Role</label>
+                <select class="form-select border-secondary p-2 fw-bold" aria-label="Default select example" name="role" required>
+                    <option selected value={{ data.role.id }} >{{ data.role.name }}</option>
+                    <option value="1">Python developer</option>
+                    <option value="2">Java developer</option>
+                    <option value="3">.Net developer</option>
+                    <option value="4">MERN Developer</option>
+                    <option value="5">Market Analyst</option>
+                    <option value="6">Sales Researcher</option>
+                    <option value="7">MFA</option>
+                    <option value="8">Sales projections</option>
+                    <option value="9">Sales Planner</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-3 py-3">
+           <button type="" class="btn btn-md btn-success mx-2 px-3 fw-bold" onclick="return confirm('Are you sure you want to update?')">Update</button>
+            <a href="{% url 'delEmp' data.id %}" class="btn btn-md btn-danger mx-2 px-3 fw-bold" onclick="return confirm('Are you sure you want to delete an employee data?')">Delete</a>
+            <a href="{% url 'rm' %}" class="btn btn-secondary  mx-2 px-3 fw-bold">Back</a> 
+        </div>
+
+        
+    </form>
+</div>
+
+
+
+{% endblock main %}

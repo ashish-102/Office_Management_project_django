@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Add Details of Employees </title>
+{% endblock title %}
+
+{% block main %}
+    <div class="d-flex justify-content-center">
+        <h3 class="my-3 p-2 bg-success bg-gradient text-light w-75 text-center rounded-1">Add Employee Detail's</h3 style="--bs-bg-opacity: .5;">
+    </div>
+
+    <div class="container my-2 px-2">
+        {% if data == 1 %}
+            <div class="alert alert-success alert-dismissible fade show fw-bold text-center" role="alert">
+                Employee data added successfully!!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+         {% endif %} 
+
+        <form action="{% url 'addEmp' %}" method="post">
+            {% csrf_token %}
+            <div class="row d-flex my-2">
+                <div class="col">
+                    <label for="inputEmail4" class="form-label fw-bold">First Name</label>
+                    <input type="text" class="form-control border-success p-2 fw-bold" aria-label="First name" name="first" required style='text-transform:capitalize'>
+                </div>
+                <div class="col">
+                    <label for="inputEmail4" class="form-label fw-bold">Last Name</label>
+                    <input type="text" class="form-control border-success p-2 fw-bold" aria-label="Last name" name="last" required style='text-transform:capitalize'>
+                </div>
+            </div>
+
+            <div class="row d-flex my-2">
+                <div class="col-6">
+                    <label for="inputEmail4" class="form-label fw-bold">Phone</label>
+                    <input type="tel" class="form-control border-success p-2 fw-bold" aria-label="Phone" name="phone" maxlength="10" required>
+                </div>
+                <div class="col-6">
+                    <label for="inputEmail4" class="form-label fw-bold">Joining date</label>
+                    <input type="date" class="form-control border-success p-2 fw-bold"  aria-label="date" name="date" required>
+                </div>
+            </div>
+
+
+            <div class="row d-flex my-2">
+                <div class="col-6">
+                    <label for="inputEmail4" class="form-label fw-bold">Salary</label>
+                    <input type="number" class="form-control border-success p-2 fw-bold" aria-label="salary" name="salary" required>
+                </div>
+                <div class="col-6">
+                    <label for="inputEmail4" class="form-label fw-bold">Bonus</label>
+                    <input type="number" class="form-control border-success p-2 fw-bold" aria-label="Bonus" name="bonus" required>
+                </div>
+            </div>
+
+            <div class="row d-flex my-2">
+                <div class="col-6">
+                    <label for="inputEmail4" class="form-label fw-bold">Department</label>
+                    <select class="form-select border-success p-2 fw-bold" aria-label="Default select example" name="dept" required>
+                        <option selected>Select Department</option>
+                        <option value="1">HR Pune</option>
+                        <option value="2">IT Pune</option>
+                        <option value="3">Sales Pune</option>
+                        <option value="4">Marketing Pune</option>
+                        <option value="5">IT Noida</option>
+                        <option value="6">Sales Noida</option>
+                        <option value="7">Marketing Noida</option>
+                        <option value="8">HR Noida</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <label for="inputEmail4" class="form-label fw-bold">Role</label>
+                    <select class="form-select border-success p-2 fw-bold" aria-label="Default select example" name="role" required>
+                        <option selected >Select Role</option>
+                        <option value="1">Python developer</option>
+                        <option value="2">Java developer</option>
+                        <option value="3">.Net developer</option>
+                        <option value="4">MERN Developer</option>
+                        <option value="5">Market Analyst</option>
+                        <option value="6">Sales Researcher</option>
+                        <option value="7">MFA</option>
+                        <option value="8">Sales projections</option>
+                        <option value="9">Sales Planner</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3 py-3">
+                <button type="submit" class="btn btn-md btn-success">Submit</button>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock main %}
+
+
+
